@@ -7,7 +7,7 @@ public class BaseApiTest {
     protected io.restassured.specification.RequestSpecification requestSpecification() {
 
         return new RequestSpecBuilder()
-                .setBaseUri("https://jsonplaceholder.typicode.com")
+                .setBaseUri(ApiConfig.BASE_URL)
                 .build();
     }
 }
