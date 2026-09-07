@@ -1,22 +1,28 @@
 package com.sdet.tests;
 
-import io.restassured.response.Response;
+import com.sdet.config.BaseApiTest;
 import org.junit.jupiter.api.Test;
 
 import static io.restassured.RestAssured.given;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class UserApiTest {
+public class UserApiTest extends BaseApiTest {
 
     @Test
     void getUserShouldReturnSuccess() {
 
-        Response response =
+        var response =
                 given()
+                        .spec(requestSpecification())
                         .when()
-                        .get("https://jsonplaceholder.typicode.com/users/1");
+                        .get("/users/1");
 
-        System.out.println("Status Code: " + response.statusCode());
-        System.out.println("Response Body:");
-        System.out.println(response.asPrettyString());
+        assertEquals(200, response.statusCode());
+
+        int userId = response.jsonPath().getInt("id");
+        String name = response.jsonPath().getString("name");
+
+        assertEquals(1, userId);
+        assertEquals("Leanne Graham", name);
     }
 }
