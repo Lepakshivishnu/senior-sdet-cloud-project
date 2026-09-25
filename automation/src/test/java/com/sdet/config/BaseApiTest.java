@@ -1,13 +1,10 @@
 package com.sdet.config;
 
-import io.restassured.builder.RequestSpecBuilder;
+import io.restassured.specification.RequestSpecification;
 
 public class BaseApiTest {
 
-    protected io.restassured.specification.RequestSpecification requestSpecification() {
-
-        return new RequestSpecBuilder()
-                .setBaseUri(ApiConfig.BASE_URL)
-                .build();
+    protected RequestSpecification requestSpecification() {
+        return RequestSpecFactory.create();
     }
 }
