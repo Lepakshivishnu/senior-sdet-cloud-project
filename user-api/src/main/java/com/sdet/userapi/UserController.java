@@ -13,7 +13,7 @@ public class UserController {
 
 		return Map.of(
 				"id", 1,
-				"name", "Vishnu",
+				"name", "Vishnu V2",
 				"username", "vishnu",
 				"email", "vishnu@example.com"
 		);
